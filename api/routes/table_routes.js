@@ -27,39 +27,46 @@ module.exports = function(app,db) {
 
     // Add Student  ---------------------------------------------->
     app.post('/add', (req,res) => { //adds  a student
-        var inputName = "Hanmi";
-        var inputCourse = "Math";
-        var inputGrade = "100";
+        var {name, course_name, grade}= req.body;
+        var inputName = name;
+        var inputCourse = course_name;
+        var inputGrade = grade;
+
         Student.create({name: inputName, course_name: inputCourse, grade: inputGrade}, function (err, students) {
             Student.find().then(function (students) {
-                console.log("new list:", students);
+                res.send(students);
             })
         })
     })
 
     // Delete Student -------------------------------------------->
-    app.delete('/delete', (req,res) => { // deletes a student
-        console.log("here")
-        Student.deleteOne({"_id": "5bf6834ffb6fc0561ffeb78f"}, function (err, students) {
+    app.delete('/delete/:id', (req,res) => { // deletes a student
+       var id = req.params.id
+        console.log(id)
+        Student.deleteOne({"_id": id}, function (err, students) {
             Student.find().then(function (students) {
-                console.log("new list:", students);
+                console.log("deleted", id);
             })
         })
     })
     // Edit Student ---------------------------------------------->
     app.patch('/edit', (req, res) => { // call to make an edit student
         console.log("here");
-       var id = "5bf856cd23f3e08c3a016cf2"
-       var editName = "Bob";
-       var edit_course = "English";
-    var edit_grade = "50"
+        console.log(req.body);
+       var id = req.body._id
+       var editName = req.body.name
+       var edit_course = req.body.course_name
+    var edit_grade = req.body.grade
         
-        Student.findOne({"_id": "5bf856cd23f3e08c3a016cf2"}, function (err, doc) {
+        Student.findOne({"_id": id}, function (err, doc) {
             doc.name = editName;
             doc.course_name = edit_course;
             doc.grade = edit_grade;
             doc.save();
-            console.log(doc);
+        })
+        Student.find().then(function (students) {
+            console.log(students);
+            res.send(students);
         })
     })
 });
