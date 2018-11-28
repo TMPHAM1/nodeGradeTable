@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import StudentList from '../components/student-table-list';
 import AddForm from '../components/student-add-form';
+import Header from '../components/header';
 
 
 
@@ -13,7 +14,8 @@ class App extends Component {
     render() { 
         return (
         <div>
-            <AddForm />
+            <Header />
+            {/* <AddForm /> */}
             <StudentList />
         </div>
         )

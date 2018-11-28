@@ -20,8 +20,8 @@ db.on("error", function() {
     console.log("error");
 })
 
-db.once("open", function() {
-    require('./routes')(app, db)
+db.once("open", function() { //opens data base connections 
+    require('./routes')(app, db) // goes into the different type of routes 
 })
 
 
