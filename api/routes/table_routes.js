@@ -12,8 +12,8 @@ module.exports = function(app,db) {
             type: Number,
         }
     })
-    var Student = mongoose.model('Student', StudentSchema);
-    // const students = db.collection("students");
+    var Student = mongoose.model('Student', StudentSchema); //Sets Student to the model 'Student' based on student Schema 
+   
     
 
     // Grab Student List ---------------------------------------->
@@ -27,7 +27,7 @@ module.exports = function(app,db) {
 
     // Add Student  ---------------------------------------------->
     app.post('/add', (req,res) => { //adds  a student
-        var {name, course_name, grade}= req.body;
+        var {name, course_name, grade}= req.body; // grabs the name, course_name and grade
         var inputName = name;
         var inputCourse = course_name;
         var inputGrade = grade;
@@ -41,7 +41,7 @@ module.exports = function(app,db) {
 
     // Delete Student -------------------------------------------->
     app.delete('/delete/:id', (req,res) => { // deletes a student
-       var id = req.params.id
+       var id = req.params.id // grabs the required id to delete in the database 
         console.log(id)
         Student.deleteOne({"_id": id}, function (err, students) {
             Student.find().then(function (students) {
