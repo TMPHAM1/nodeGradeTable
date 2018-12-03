@@ -66,7 +66,7 @@ handleEditChange = (event) => { // Handles form input
 async handleEditFormSubmit() { //handles Adding Student
         const {editName, editCourse_name, editGrade } = this.state.editForm;
         var {editID} = this.state;
-     var editStudent = await axios.patch('http://tienmpham.com:5000/edit', {
+     var editStudent = await axios.patch('https://tienmpham.com:5000/edit', {
                 _id: editID,
                 name: editName,
                 course_name: editCourse_name,
@@ -99,7 +99,7 @@ console.log("new State", this.state.students);
     }
 async handleFormSubmit() { //handles Adding Student
        const {name, course_name, grade} = this.state.form;
-    var addedStudent = await axios.post('http://tienmpham.com:5000/add', {
+    var addedStudent = await axios.post('https://tienmpham.com:5000/add', {
                name: name,
                course_name: course_name,
                grade: grade,
@@ -113,7 +113,7 @@ async handleFormSubmit() { //handles Adding Student
 
 
  async pullStudents() {  // Handles Grabbing student Data 
-var students = await axios.get("http://tienmpham.com:5000/read")
+var students = await axios.get("https://tienmpham.com:5000/read")
 
 this.setState({
     students: students.data
@@ -128,7 +128,7 @@ async deleteStudent(event) {
     var id = target.id;
 
 
-    var deleted = await axios.delete("http://tienmpham.com:5000/delete/" + id).then(row.remove());
+    var deleted = await axios.delete("https://tienmpham.com:5000/delete/" + id).then(row.remove());
     
 }
     render() {
