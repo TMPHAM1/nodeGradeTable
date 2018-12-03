@@ -3,11 +3,6 @@
   "version": "1.0.0",
   "description": "React prototypes for learning React, pairs with http://reactPrototypes.com",
   "main": "index.js",
-  "proxy": {
-    "/api/*": {
-      "target": "http://localhost:3000"
-    }
-  },
   "scripts": {
     "start": "node dev_server.js",
     "bundle": "webpack --config webpack.config.js",
