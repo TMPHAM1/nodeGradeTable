@@ -19,9 +19,7 @@
     "type": "git",
     "url": "https://github.com/Learning-Fuze/react-prototypes.git"
   },
-  "dependencies": {
-    
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/polyfill": "^7.0.0",
     "axios": "^0.18.0",
